@@ -1,18 +1,19 @@
-import * as sns from '@aws-cdk/aws-sns';
-import * as subs from '@aws-cdk/aws-sns-subscriptions';
-import * as sqs from '@aws-cdk/aws-sqs';
+import * as path from 'path'
+import * as Lambda from "@aws-cdk/aws-lambda"
 import * as cdk from '@aws-cdk/core';
 
 export class HelloCdkStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const queue = new sqs.Queue(this, 'HelloCdkQueue', {
-      visibilityTimeout: cdk.Duration.seconds(300)
+// Configure path to Dockerfile
+    const dockerfile = path.join(__dirname, "../src/lambda-node-example");
+
+    // Create AWS Lambda function and push image to ECR
+    new Lambda.DockerImageFunction(this, "function", {
+      code: Lambda.DockerImageCode.fromImageAsset(dockerfile),
+      timeout: cdk.Duration.seconds(300),
     });
 
-    const topic = new sns.Topic(this, 'HelloCdkTopic');
-
-    topic.addSubscription(new subs.SqsSubscription(queue));
   }
 }
