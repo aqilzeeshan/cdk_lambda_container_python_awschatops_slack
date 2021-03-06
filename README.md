@@ -1,5 +1,5 @@
+- cdk deploy --parameters workspace=XXXXXXXX --parameters channel=XXXXXXXX
 - This code is inspired by https://medium.com/faun/deploy-an-aws-lamba-function-as-docker-image-and-invoke-it-from-slack-a977f98025af. 
-
 - Always use Cloud9 when creating container based Lambda function as it takes forever or times out when doing it locally. 
 - Use https://gist.github.com/aqilzeeshan/9b1ea973b51e24afca51aedd93a6049b to create cloud9 and subnet ending with c0020a9c as input parameter value
 - https://docs.aws.amazon.com/cloud9/latest/user-guide/sample-cdk.html is helpful guide to setup Cloud9 for CDK but all is already setup, there is nothing to do.
