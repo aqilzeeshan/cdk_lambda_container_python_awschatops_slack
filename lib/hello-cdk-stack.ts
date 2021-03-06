@@ -8,6 +8,14 @@ import iam = require('@aws-cdk/aws-iam');
 export class HelloCdkStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
+    
+    const slackWorkSpaceId = new cdk.CfnParameter(this, "workspace", {
+      type: "String",
+      description: "enter slack workspace id"});
+
+    const slackChannelId = new cdk.CfnParameter(this, "channel", {
+      type: "String",
+      description: "enter slack channel id"});
 
 // Configure path to Dockerfile
     const dockerfile = path.join(__dirname, "../src/lambda-python-example");
@@ -20,8 +28,8 @@ export class HelloCdkStack extends cdk.Stack {
     
     const slackChannel = new chatbot.SlackChannelConfiguration(this, 'MySlackChannel', {
       slackChannelConfigurationName: 'awsbot-channel-config',
-      slackWorkspaceId: 'T01Q7BPE170',
-      slackChannelId: 'C01QE5JL4LA',
+      slackWorkspaceId: slackWorkSpaceId.valueAsString, 
+      slackChannelId: slackChannelId.valueAsString
     });
     
     //Issue created because the next line doesn't work https://github.com/aws/aws-cdk/issues/13444
