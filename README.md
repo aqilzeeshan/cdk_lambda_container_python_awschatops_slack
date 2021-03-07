@@ -5,7 +5,8 @@
 - https://docs.aws.amazon.com/cloud9/latest/user-guide/sample-cdk.html is helpful guide to setup Cloud9 for CDK but all is already setup, there is nothing to do.
 - This work is inspired by https://sbstjn.com/blog/aws-cdk-lambda-fleet-multiple-docker-images-container/
 - To look at later https://github.com/talkncloud/aws/tree/main/essential-billing-bot
-- To implement use cases mentioned in https://docs.aws.amazon.com/chatbot/latest/adminguide/chatbot-lambda-common-use-cases.html 
+- To implement use cases https://docs.aws.amazon.com/chatbot/latest/adminguide/chatbot-lambda-common-use-cases.html
+- To implement use cases https://aws.amazon.com/blogs/devops/running-aws-commands-from-slack-using-aws-chatbot/ 
 
 
 
